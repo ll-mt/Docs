@@ -1,9 +1,9 @@
 #  Remote backup and clone of Back of Lab (BOLD)
 
-## Client:        Phoenix Photo
-## Created Date:  12.08.15
-## Modified Date: 12.08.15
-## Authors:       Davy Jones (TS)
+##### Client:        Phoenix Photo
+##### Created Date:  12.08.15
+##### Modified Date: 12.08.15
+##### Authors:       Davy Jones (TS)
 
 ---------
 
@@ -15,10 +15,10 @@ The process will utilise s3cmd for syncing files/folders from remote site to an 
 The biggest barrier with this work is the bandwidth constraints from the remote site to AWS data centre.
 
 ### AWS S3 Bucket locations
-UK sites             - eu-west-1
-European Sites       - eu-central-1
-US East Coast Sites  - us-east-1
-US West Coast Sites  - us-west-1 or us-west-2
+- UK sites             - eu-west-1
+- European Sites       - eu-central-1
+- US East Coast Sites  - us-east-1
+- US West Coast Sites  - us-west-1 or us-west-2
 
 ## 2. Steps/Checklist
 
@@ -46,6 +46,8 @@ US West Coast Sites  - us-west-1 or us-west-2
 ### Install and configure s3cmd
 s3cmd is built with python so going to need that, though should be there by default.
 1. On ubuntu and debian based systems run:
+```
     sudo apt-get install s3cmd
-2. 
+```
+2.  << TO BE COMPLETED >>
 ## 3. Links
