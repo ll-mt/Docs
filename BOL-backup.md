@@ -32,6 +32,7 @@ US West Coast Sites  - us-west-1 or us-west-2
 6.  /home/kiosk
 7.  /etc/lab
 8.  /var/log
+
 #### These folders are the orders - these can be backed up locally potentially.
 9.  /home/share/SharedFolders/New_Print_Orders
 10. /home/share/SharedFolders/New_Prism_Orders
