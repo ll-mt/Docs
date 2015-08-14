@@ -35,12 +35,12 @@
 
 1. Is the default route set? Is the netmask set correctly?
 2. http://www.psc.edu/~mathis/MTU/index.html : Six classes of bugs limit network performance.
-        - 1. packet losses, corruption, congestion, bad hardware
-        - 2. IP Routing, long round trip times
-        - 3. Packet reordering
-        - 4. Inappropriate buffer space
-        - 5. Inappropriate packet sizes
-        - 6. Inefficient applications
+        ..1. packet losses, corruption, congestion, bad hardware
+        ..2. IP Routing, long round trip times
+        ..3. Packet reordering
+        ..4. Inappropriate buffer space
+        ..5. Inappropriate packet sizes
+        ..6. Inefficient applications
 3. Is someone else also at that IP address? (Unplug the network cable and ping the address)
 4. (firewall ruleset issues) If you move the machine to another IP address does it still happen? If you move the machine to a different subnet does it still happen? If you put a different machine at that IP address does it still happen? If you boot the same machine on a different OS (like a CD-ROM based Linux or FreeBSD) does it still happen?
 5. Does the same thing happen when you specify the IP address instead of the hostname? (Hint: the lmhost or /etc/hosts may be overriding)
