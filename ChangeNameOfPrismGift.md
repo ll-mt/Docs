@@ -18,8 +18,8 @@ The default value for this is being overwritten within `/home/share/SharedFolder
 Within this folder was a file named `info.ini` with the following contents:
 
 > [Service]
-> Title=Canvas / Artbox Prints
-> Description=Create your own Canvas Print or Solid Artbox
+  Title=Canvas / Artbox Prints
+  Description=Create your own Canvas Print or Solid Artbox
 
 Unsure why this is getting pulled in but will investigate further
 
