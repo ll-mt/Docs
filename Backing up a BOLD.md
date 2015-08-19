@@ -121,6 +121,9 @@ s3cmd is built with python so going to need that, though should be there by defa
 <<steps to follow>>
 
 ### restart and test
+Once the config and software files have been pulled in then we should only have to restart the new machine.
+On reboot the machine *should* login to kiosk automatically and the `Web Order Manager` *should* startup.
+You will then need to open the web browser and enter `localhost` to start the `lightweight-web-downloader`.
 <<steps to follow>>
 
 ## 3. Links
