@@ -1,4 +1,4 @@
-# Costco Remote Kiosk themepack 
+# Costco Remote Kiosk themepack
 
 ##### Client: Costco
 ##### Created Date:
@@ -23,7 +23,7 @@ This can be reproduced by doing the following:
 9. IT WILL FAIL AND AMBIT WILL CRASH
 
 ## 2. The Cause
-The error eludes to a themepack entited "calendarsfj.themepack" and within here a specific pack named "geopatterns_12x12.calendar"
+The error eludes to a themepack entitled "calendarsfj.themepack" and within here a specific pack named "geopatterns_12x12.calendar"
 
 Within this folder there is no about.yml, no nothing!
 
@@ -34,6 +34,6 @@ On further investigation it is seen that the Walmart themepacks are being downlo
 
 ## 3. The Solution
 1. Archive the empty folder `mkdir archive && mv geopatterns_12x12.calender /archive`
-2. rename the mispelt folder `mv geopatterns_12x12calendar geopatterns_12x12.calendar`
+2. rename the mis-spelt folder `mv geopatterns_12x12calendar geopatterns_12x12.calendar`
 
-**18/08/15** Seperate dot release of Kiosk software due that removes unnessesary thempacks
+**18/08/15** Separate dot release of Kiosk software due that removes unnessesary thempacks
