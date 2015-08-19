@@ -1,8 +1,7 @@
-# Costco Remote Kiosk themepack
+# Costco Remote Kiosk themepack naming problem
 
 ##### Client: Costco
-##### Created Date:
-##### Modified Date:
+##### Created Date: 19.08.15
 ##### Authors: Davy Jones (TS)
 ##### Metadata: costco;remote;themepacks;typo
 --------

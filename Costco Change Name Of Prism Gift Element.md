@@ -8,7 +8,7 @@
 
 ## 1. The Symptom
 
-On the main screen on a few Costco Remote kiosk. It was seen that The Bottom Right Tile was name 'Canvas / Artbox Prints' instead of the expected 'Canvases and Gifts'. See image below:
+On the main screen on a few Costco Remote kiosk. It was seen that The Bottom Right Tile was name **'Canvas / Artbox Prints'** instead of the expected **'Canvases and Gifts'**. See image below:
 ![Prism Gifts Error](images/PrismGiftError-1.png)
 
 ## 2. The Why
@@ -18,8 +18,8 @@ The default value for this is being overwritten within `/home/share/SharedFolder
 Within this folder was a file named `info.ini` with the following contents:
 
 > [Service]
-  Title=Canvas / Artbox Prints
-  Description=Create your own Canvas Print or Solid Artbox
+> Title=Canvas / Artbox Prints
+> Description=Create your own Canvas Print or Solid Artbox
 
 Unsure why this is getting pulled in but will investigate further
 
