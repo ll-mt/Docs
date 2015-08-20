@@ -2,7 +2,7 @@
 
 ##### Client:        Phoenix Photo
 ##### Created Date:  12.08.15
-##### Modified Date: 19.08.15
+##### Modified Date: 20.08.15
 ##### Authors:       Davy Jones (TS)
 
 ---------
@@ -73,9 +73,13 @@ s3cmd is built with python so going to need that, though should be there by defa
 ### Backing up target machine's config and software folders to s3.
 
 1. Sync the relevant folders outlined above using the following command:
-```
+  ```
     sudo s3cmd -r --skip-existing -H sync path/to/folder/ s3://ll-ts-backup-1/clientname-machinename/month/path/to/folder/
-```
+  ```
+  An example of this would be:
+  ``` 
+    sudo s3cmd -r --skip-existing -H sync /usr/local/ambit/ s3://ll-ts-backup-1/phoenixphoto-ll2020/Aug15/usr/local/ambit/
+  ```
 
 ### Install lubuntu 14.04 on fresh machine
 1. Speak to Warehouse about getting a new machine provisioned.
@@ -118,12 +122,21 @@ s3cmd is built with python so going to need that, though should be there by defa
 2. Run script as root `sudo ruby bol-id-script.rb`
 
 ### Pulling config and software folders from s3 to new machine
-<<steps to follow>>
+1. Sync the relevent folders from s3 to new machine using the following command:
+  ```
+    sudo s3cmd -r --skip-existing -H sync s3://ll-ts-backup-1/clientname-machinename/month/path/to/folder/ /path/to/local/folder/
+  ```
+  An example of this would be:
+  ```
+    sudo s3cmd -r --skip-existing -H sync s3://ll-ts-backup-1/phoenixphoto-ll2020/Aug15/usr/local/ambit/ /usr/local/ambit/
+  ```
 
 ### restart and test
 Once the config and software files have been pulled in then we should only have to restart the new machine.
 On reboot the machine *should* login to kiosk automatically and the `Web Order Manager` *should* startup.
 You will then need to open the web browser and enter `localhost` to start the `lightweight-web-downloader`.
-<<steps to follow>>
 
 ## 3. Links
+
+- s3cmd GitHub:  https://github.com/s3tools/s3cmd/blob/master/README.md
+- s3cmd manpage: http://s3tools.org/usage
