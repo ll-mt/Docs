@@ -73,13 +73,13 @@ s3cmd is built with python so going to need that, though should be there by defa
 ### Backing up target machine's config and software folders to s3.
 
 1. Sync the relevant folders outlined above using the following command:
-  ```
-    sudo s3cmd -r --skip-existing -H sync path/to/folder/ s3://ll-ts-backup-1/clientname-machinename/month/path/to/folder/
-  ```
+```
+  sudo s3cmd -r --skip-existing -H sync path/to/folder/ s3://ll-ts-backup-1/clientname-machinename/month/path/to/folder/
+```
   An example of this would be:
-  ``` 
-    sudo s3cmd -r --skip-existing -H sync /usr/local/ambit/ s3://ll-ts-backup-1/phoenixphoto-ll2020/Aug15/usr/local/ambit/
-  ```
+``` 
+  sudo s3cmd -r --skip-existing -H sync /usr/local/ambit/ s3://ll-ts-backup-1/phoenixphoto-ll2020/Aug15/usr/local/ambit/
+```
 
 ### Install lubuntu 14.04 on fresh machine
 1. Speak to Warehouse about getting a new machine provisioned.
@@ -123,13 +123,13 @@ s3cmd is built with python so going to need that, though should be there by defa
 
 ### Pulling config and software folders from s3 to new machine
 1. Sync the relevent folders from s3 to new machine using the following command:
-  ```
-    sudo s3cmd -r --skip-existing -H sync s3://ll-ts-backup-1/clientname-machinename/month/path/to/folder/ /path/to/local/folder/
+```
+  sudo s3cmd -r --skip-existing -H sync s3://ll-ts-backup-1/clientname-machinename/month/path/to/folder/ /path/to/local/folder/
   ```
   An example of this would be:
-  ```
-    sudo s3cmd -r --skip-existing -H sync s3://ll-ts-backup-1/phoenixphoto-ll2020/Aug15/usr/local/ambit/ /usr/local/ambit/
-  ```
+```
+  sudo s3cmd -r --skip-existing -H sync s3://ll-ts-backup-1/phoenixphoto-ll2020/Aug15/usr/local/ambit/ /usr/local/ambit/
+```
 
 ### restart and test
 Once the config and software files have been pulled in then we should only have to restart the new machine.
