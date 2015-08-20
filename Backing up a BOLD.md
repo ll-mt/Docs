@@ -54,11 +54,12 @@ The biggest barrier with this work is the bandwidth constraints from the remote 
 ### Install and configure s3cmd on the target computer
 
 s3cmd is built with python so going to need that, though should be there by default.
+
 1. ssh to the target machine through Jehu
 2. On ubuntu and debian based systems run:
-```
+    ```
     sudo apt-get install s3cmd
-```
+    ```
 3. Download the s3cfg file from Davy's server (if timeout then speak to Davy)
   - THIS NEEDS TO BE MOVED TO SOMEWHERE LIVELINK-Y
 ```
