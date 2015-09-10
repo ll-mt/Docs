@@ -86,12 +86,14 @@ int main(int argc, char **argv)
     return 0;
 }
 ```
+
 Importantly, this line:
 `ioctl(fd, USBDEVFS_RESET, 0);` This runs ioctl to call USBDEVFS_RESET on a device that can be specified by its mount location **found in `lsusb`** and looks like: `/dev/bus/usb/00X/00Y`.
 
 This means that now we can specify the device that gets reset. This specific line can also be called in Ruby adn then looped through an array of devices.
 
 New ruby script is below:
+```
 
 #!/usr/bin/env ruby
 
@@ -130,4 +132,4 @@ devices.each do |device|
   else
     logger.info "Successfully reset #{device}"
 end
-
+```
