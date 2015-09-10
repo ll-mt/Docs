@@ -43,5 +43,5 @@ You can do much more with tmux than this, have a read of the docs to see if it's
 
 ## 6. References
 
-[tmux Home Page](https://tmux.github.io/)
-[tmux Cheat Sheet](https://gist.github.com/MohamedAlaa/2961058)
+- [tmux Home Page](https://tmux.github.io/)
+- [tmux Cheat Sheet](https://gist.github.com/MohamedAlaa/2961058)
