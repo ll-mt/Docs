@@ -132,6 +132,9 @@ s3cmd is built with python so going to need that, though should be there by defa
   sudo s3cmd -r --skip-existing -H sync s3://ll-ts-backup-1/phoenixphoto-ll2020/Aug15/usr/local/ambit/ /usr/local/ambit/
 ```
 
+### install printer drivers
+1. On old machine run `lpstat -a` to get a list of printers that are installed.
+
 ### restart and test
 Once the config and software files have been pulled in then we should only have to restart the new machine.
 On reboot the machine *should* login to kiosk automatically and the `Web Order Manager` *should* startup.
