@@ -41,7 +41,14 @@ You can do much more with tmux than this, have a read of the docs to see if it's
 - Attach to running session:
   - `tmux attach -t nameofsession`
 
-## 6. References
+## 6. How to kill a session/window
+
+- Attach to running session:
+  - `tmux attach -t nameofsession`
+- Kill session
+  - `<ctrl>+b &`
+
+## 7. References
 
 - [tmux Home Page](https://tmux.github.io/)
 - [tmux Cheat Sheet](https://gist.github.com/MohamedAlaa/2961058)
