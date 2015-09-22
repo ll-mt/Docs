@@ -93,6 +93,7 @@ sub   4096R/9C5F50AF 2015-09-22
 
 Make a note of your signing key ID (231E2BB7 above). We will need this to create a subkey for it.
 
+
 #### 2. Generate a Subkey to Sign Packages
 
 Now we'll create a second signing key so that we don’t need the master key on this server. Think of the master key as the root authority that gives authority to subkeys. If a user trusts the master key, trust in a subkey is implied.
@@ -169,6 +170,7 @@ In the output above, the SC from our master key tells us that the key is only fo
 
 And finally we want to save. `gpg> save`
 
+
 #### 3. Detach Master Key fro Subkey
 
 The point of creating the subkey is so we don't need the master key on our server, which makes it more secure. Now we'll detach our master key from our subkey. We will need to export the master key and subkey, then delete the keys from GPG's storage, then re-import just the subkey.
@@ -214,6 +216,7 @@ And now we should publish the signing keyto keyserver.ubuntu.com
 This command publishes your key to a public storehouse of keys – in this case Ubuntu’s own key server.
 This allows others to download your key and easily verify your packages. 
 
+
 ## Set up Repository With Reprepro
 
 ### 1. Install and configure Reprepro
@@ -240,16 +243,20 @@ Create two config file (options and distributions)
 `touch options distributions`
 
 Edit options with the following
-> ask-passphrase
-> verbose
+```
+ask-passphrase
+verbose
+```
 
 Edit the distributions file with the following:
-> Origin: Ubuntu
-> Label: LiveLink 615 Repository
-> Codename: trusty
-> Components: main
-> Architectures: i386 amd64
-> SignWith: 3648C586
+```
+Origin: Ubuntu
+Label: LiveLink 615 Repository
+Codename: trusty
+Components: main
+Architectures: i386 amd64
+SignWith: 3648C586
+```
 
 The Codename directive directly relates to the code name of the released Debian distributions and is required. This is the code name for the distribution that will be downloading packages, and doesn't necessarily have to match the distribution of this server. For example, the Ubuntu 14.04 LTS release is called trusty, Ubuntu 12.04 LTS is called precise, and Debian 7.6 is known as wheezy. This repository is for Ubuntu 14.04 LTS so trusty should be set here.
 
@@ -259,18 +266,20 @@ Architectures is another required field. This field lists binary architectures w
 
 To specify how other computers will verify our packages we use the SignWith directive. This is an optional directive, but required for signing. The signing key earlier in this example had the ID 3648C586, so that is set here. Change this field to match the subkey’s ID that you generated. 
 
+
 ### 2. Add a Package with Reprepro
 
 `reprepro -b /var/repos includedeb trusty package-name.deb`
 
 enter passwords
 
+
 ### 3. Listing and Deleting
 
 We can list the managed packages with the list command followed by the codename. For example: 
 
 ```
-reprepro -b /var/repositories/ list trusty
+reprepro -b /home/vhosts/repositories/ list trusty
 
 trusty|main|i386: example-helloworld 1.0.0.0
 trusty|main|amd64: example-helloworld 1.0.0.0
@@ -278,14 +287,132 @@ trusty|main|amd64: example-helloworld 1.0.0.0
 
 To delete a package, use the remove command. The remove command requires the codename of the package, and the package name. For example:
 
-`reprepro -b /var/repositories/ remove trusty example-helloworld`
+`reprepro -b /home/vhosts/repositories/ remove trusty example-helloworld`
+
 
 ### 4. Make the Repository Public
 
+This depends on whether the server you are hosting this from is running apache2 or nginx. Both methods will be explained
+
+#### 1. Apache
+
+Install Apache if not available
+
+```
+apt-get update
+apt-get install apache2
+```
+
+Create new VirtualHost in `/etc/apache2/sites-available`
+
+`vim repository.example.com`
+
+Input the following config:
+
+```
+<VirtualHost *:80>
+ServerName repository.example.com
+ServerAlias www.repository.example.com
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\" %I %O" combinedio
+DocumentRoot /home/vhosts/repositories/
+
+<Directory /home/vhosts/repositories/>
+       Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        allow from all
+</Directory>
+
+<Directory "/home/vhosts/repositories/db/">
+  Order allow,deny
+  Deny from all
+</Directory>
+
+<Directory "/home/vhosts/repositories/conf/">
+  Order allow,deny
+  Deny from all
+</Directory>
+
+ErrorLog /home/vhosts/repositories/log/repo_error.log
+LogLevel warn
+CustomLog /home/vhosts/repositories/log/repo_access.log combinedio
+```
+
+Enable the site (this creates a symlink from sites-available to sites-enabled)
+
+`a2ensite repository.example.com`
+
+Reload the apache2 config, check it, then restart apache
+
+```
+service apache2 reload
+
+apache2ctl configtest
+
+service apache2 restart
+```
+
+#### 2. nginx
+
+Install Ngnix if not available
+
+```
+apt-get update
+apt-get install ngnix
+```
+
+Now let's create a new host in /etc/nginx/sites-available
+
+`vim repository.example.com`
+
+And enter the following config bits
+
+```
+server {
+    listen       80;
+    server_name  www.repository.example.com repository.example.com;
+    root   /home/vhosts/repositories/;
+
+    access_log /home/vhosts/repositories/log/repo.access.log
+    error_log /home/vhosts/repositories/log/repo.error.log
+    
+    location ~ /(db|conf) {
+      deny        all;
+      return      404;
+    }
+}
+```
+
+Restart nginx
+
+`service nginx restart`
+
+Sort out DNS
+
+Done, we are all good to go.
 
 
 ## Install Package from the Repo!
 
+We are now ready to test that our new repo can be pulled from.
+
+On the new server, download your public key to verify the packages from your repository. Recall that you published your key to keyserver.ubuntu.com.
+
+This is done with the apt-key command.
+
+`apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3648C586`
+
+This command downloads the specified key and adds the key to the apt-get database. The adv command tells apt-key to use GPG to download the key. The other two arguments are passed directly to GPG. Since you uploaded your key to “keyserver.ubuntu.com” use the --keyserver keyserver.ubuntu.com directive to retrived the key from the same location. The --recv-keys <key ID> directive specifies the exact key to add.
+
+Now add the repository's address for apt-get to find. You'll need your repository server's IP address from the previous step. This is easily done with the add-apt-repository program. 
+
+`add-apt-repository "deb http://repository.example.com/ trusty main"`
+
+The repository location should be set to the location of your server. We have an HTTP server so the protocol is http://. The example’s location was repository.example.com. Our server’s code name is trusty. This is a simple repository, so we called the component "main".
+
+After we add the repository, make sure to run an apt-get update. This command will check all the known repositories for updates and changes (including the one you just made). 
+
+Now run `apt-get update` and you will be good to go.
 
 
 ## References
