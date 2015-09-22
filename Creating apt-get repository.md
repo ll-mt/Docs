@@ -6,7 +6,7 @@
 
 ## Create and publish a Signing Key with GPG
 
-1. #### Generate a Master Key
+#### 1. Generate a Master Key
     
 `apt-get install rng-tools`
    
@@ -65,7 +65,7 @@ You selected this USER-ID:
 Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
 ```
     
-You will need to input a passphrase now. Ensure you *memorise this* as there is no way to recover a gpg key.
+You will need to input a passphrase now. Ensure you **memorise this** as there is no way to recover a gpg key.
 
 ```
 You need a Passphrase to protect your secret key.
