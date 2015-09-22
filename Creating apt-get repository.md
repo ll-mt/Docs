@@ -175,7 +175,7 @@ The point of creating the subkey is so we don't need the master key on our serve
 
 First let's use the `--export-secret-key` and `--export` commands to export the whole key. Remember to use your master key's ID!
 
-``
+```
 gpg --export-secret-key 231E2BB7 > private.key
 gpg --export 231E2BB7 >> private.key
 ```
@@ -190,9 +190,9 @@ By default --export-secret-key and --export will print the key to our console, s
 
 Now export your public key and your subkey. Make sure to change the IDs to match the master key and the second subkey that you generated (don't use the first subkey)
 
-``
-gpg --export-secret-key 2648C586 > public.key
-gpg --export 2648C586 >> signing.key
+```
+gpg --export 231E2BB7 > public.key
+gpg --export-secret-subkeys 3648C586 > signing.key
 ```
 
 Now we have backups of all keys we can remove the master key from the server.
