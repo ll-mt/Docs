@@ -3,6 +3,14 @@
 ##### Created date: 22.09.2015
 
 --------
+## Why bother?
+
+So you want to host your own .deb packages to make is simple for users to install without the need for git or building from source?
+
+Read on...
+
+This guide goes through how to set up a Debian flavoured package repository. We are using `reprepro` to install the packages, `gpg` for security and either `nginx` or `apache` to serve it to the world.
+
 
 ## Create and publish a Signing Key with GPG
 
