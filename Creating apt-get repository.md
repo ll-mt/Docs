@@ -6,7 +6,7 @@
 
 ## Create and publish a Signing Key with GPG
 
-1. Generate a Master Key
+1. #### Generate a Master Key
     
 `apt-get install rng-tools`
    
