@@ -240,16 +240,20 @@ Create two config file (options and distributions)
 `touch options distributions`
 
 Edit options with the following
-> ask-passphrase
-> verbose
+```
+ask-passphrase
+verbose
+```
 
 Edit the distributions file with the following:
-> Origin: Ubuntu
-> Label: LiveLink 615 Repository
-> Codename: trusty
-> Components: main
-> Architectures: i386 amd64
-> SignWith: 3648C586
+```
+Origin: Ubuntu
+Label: LiveLink 615 Repository
+Codename: trusty
+Components: main
+Architectures: i386 amd64
+SignWith: 3648C586
+```
 
 The Codename directive directly relates to the code name of the released Debian distributions and is required. This is the code name for the distribution that will be downloading packages, and doesn't necessarily have to match the distribution of this server. For example, the Ubuntu 14.04 LTS release is called trusty, Ubuntu 12.04 LTS is called precise, and Debian 7.6 is known as wheezy. This repository is for Ubuntu 14.04 LTS so trusty should be set here.
 
