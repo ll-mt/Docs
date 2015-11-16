@@ -29,8 +29,6 @@ By swapping the port to a USB2 port we get a different error message:
 
 lockdownd service relates to the UUID of the device.
 
-
-
 ## Troubleshoot process
 
 1. Customer complains about iPhone not showing images
