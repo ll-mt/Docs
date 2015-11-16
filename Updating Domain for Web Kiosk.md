@@ -4,7 +4,7 @@
 
 # Intro
 
-This docement describes the process of transferring a customers Web Kiosk domain from one to another and what files need to be changed.
+This document describes the process of transferring a customers Web Kiosk domain from one to another and what files need to be changed.
 
 These are experiences I have had while moving DS Colour from their dscolour.photokio.sk (1) domain to dscolourlabs.co.uk (2).
 
@@ -65,13 +65,14 @@ Please note that unless you reload nginx this config is not fully live. I would 
 
 ### Change settings in mylab
 
-![MyLab Site Config](images/WebKiosk-MyLab-config.png)
+Within Preferences and Lab Settings in the Mylab of the site we need to change the `Public URL` and the `Homepage` links to be for the new site, see image below.
+
 ![MyLab Lab Settings](images/WebKiosk-InternetAddress.png)
 
 ### Change WorldPay Config
 
 ![WebKiosk-WorldPay-Config](images/WebKiosk-WorldPayConfig.jpg)
 
-# Potentially pitfalls
+# References
 
-### Customers Cookie info
+[Original WorldPay Integration Documentation](https://sites.google.com/a/livelinktechnology.net/intranet/home/worldpay-redirect-after-payment)
